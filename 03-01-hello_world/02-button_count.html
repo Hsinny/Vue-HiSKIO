@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js Basic</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+</head>
+
+<!-- 範例目的：點擊累加按鈕，秀出累加數字 -->
+<body>
+  <!-- 聲明式(宣告式) 作法 -->
+  <div id="counter">                      <!-- 1. 建立 Vue 的容器 -->
+    <h1>{{count}}</h1>                    <!-- 2. 顯示累加數字 -->
+    <button v-on:click="add">+1</button>  <!-- 2. 控制累加的按鈕 & 6. 綁定要用方法的函式 -->
+  </div>
+  <script>                                
+    new Vue({                               // 3. 宣告 Vue
+      el: '#counter',                       // 4. 指向元素                  
+      data: {                               // 5. 建立資料內容
+        count: 0,                      
+      },
+      methods: {                            // 6. 建立方法、函式
+        add() {
+          this.count += 1;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
