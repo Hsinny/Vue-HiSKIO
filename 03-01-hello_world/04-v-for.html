@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-for | Vue.js Basic</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-for="step in aryItems">{{step}}</div> <!-- 2. v-for 依序顯示陣列裡每筆資料 -->
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        aryItems: [                                // 1. 資料為一陣列
+          '進階 JavaScript ES 6',
+          '學 Vue.js',
+          '架一個電商網站'
+        ] 
+      },
+    });
+  </script>
+</body>
+</html>
