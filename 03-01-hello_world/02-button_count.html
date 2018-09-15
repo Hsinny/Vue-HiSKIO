@@ -10,7 +10,7 @@
 
 <!-- 範例目的：點擊累加按鈕，秀出累加數字 -->
 <body>
-  <!-- 聲明式(宣告式) 作法 -->
+  <!-- 聲明式渲染：三大主流框架的做法 -->
   <div id="counter">                      <!-- 1. 建立 Vue 的容器 -->
     <h1>{{count}}</h1>                    <!-- 2. 顯示累加數字 -->
     <button v-on:click="add">+1</button>  <!-- 2. 控制累加的按鈕 & 6. 綁定要用方法的函式 -->
@@ -25,8 +25,22 @@
         add() {
           this.count += 1;
         }
-      }
-    })
+      },
+    });
+  </script>
+
+  <!-- 命令式渲染(一個口令一個動作)：示範用 jQuery 操作，結果同上，下的指令會很多，之後也不易修改 -->
+  <div>
+    <h1 id="result">0</h1>
+    <button id="btn-add">+1</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $('#btn-add').click(function() {
+      let count = parseInt($('#result').text());   // 把元素(計數器)內的數字取出
+      count += 1;                                  // 累加
+      $('#result').text(count);                    // 累加結果放回原本元素
+    });
   </script>
 </body>
 </html>
