@@ -8,13 +8,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 </head>
 <body>
-  <div id="app">
-    {{message}}
+  <div id="app">     <!-- 1. 在 html 建立容器 -->
+    {{message}}      <!-- 5. 將 Vue 內的資料渲染到畫面，Vue 容器與 Vue 資料互相綁定 -->
   </div>
   <script>
-    new Vue({
-      el: '#app',
-      data: {
+    new Vue({          // 2. 宣告 Vue 實體，並傳入一個物件
+      el: '#app',      // 3. 把這個 Vue 綁定到 html 上的哪個容器
+      data: {          // 4. Vue 內的資料
         message: 'Hello World',
       }
     });
