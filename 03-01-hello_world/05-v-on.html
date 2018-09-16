@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>處理使用者輸入 | Vue.js Basic</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+</head>
+<body>
+  <!-- 範例1目的：處理使用者點擊的按鈕，監聽按鈕觸發事件 -->
+  <div id="counter">
+    <h1>{{count}}</h1>
+    <button v-on:click="add">+1</button>  <!-- 1. 監聽起手式 v-on:事件 = "呼叫函式" -->
+  </div>
+
+  <script>
+    new Vue({
+      el: `#counter`,
+      data: {
+        count: 0,                            // 3. 資料在 methods 內被函式操作
+      },
+      methods: {                             // 2. Vue 的方法內，宣告函式
+        add(){                              
+          this.count += 1;                   // 2. 單純操作 data 裡面 count 的資料，不需處理要操作哪個 DOM
+        },
+      },
+    });
+  </script>
+  <hr>
+
+  <!-- 範例2目的：使用者點擊按鈕執行刪除項目 -->
+  <div id="remover">
+    <ul>
+      <li v-for="item in aryItems">{{item}}</li>
+    </ul>
+    <button v-on:click="remove">remove</button>     <!-- 2-1. 監聽按鈕，呼叫函式 -->
+  </div>
+
+  <script>
+    new Vue({
+      el: '#remover',
+      data: {
+        aryItems: [1,2,3,4,5],                        // 2-2. 設定資料
+      }, 
+      methods: {                         
+        remove(){                                     // 2-3. 寫出函式內指令
+          this.aryItems.pop();                        // .pop() 移除陣列最後一個資料項目，一樣只處理資料，不需處理要操作哪個 DOM
+        }
+      }
+    })
+  </script>
+  <hr>
+
+  <!-- 範例3目的：使用者在 input 輸入的資料，顯示在畫面上 -->
+  <div id="todo">
+    <input type="text" v-model="text">  <!-- v-model 可綁定 Vue 內的資料，雙向綁定--> <!-- 輸入的值，會被存到 Vue 的 data 內--> <!-- 輸入資料，存入資料 -->
+    <div>{{text}}</div>
+  </div>
+
+  <script>
+    new Vue({
+      el: `#todo`,
+      data: {
+        text: '',
+      },
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-if | Vue.js Basic</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <span v-if="see">Now you see me.</span>   <!-- v-if 根據綁定的資料 T/F 來決定顯示與否 -->
+    <span v-else>Now you don't.</span>
+    <hr>
+    <span v-if="display">True 顯示</span>
+    <span v-else>False 隱藏</span>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        see: true,  
+        display: false,
+      },
+    });
+  </script>
+</body>
+</html>
