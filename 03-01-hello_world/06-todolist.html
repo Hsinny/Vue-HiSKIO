@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todo List | Vue.js Basic</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <input type="text" v-model="input">                    <!-- 1. 輸入內容作 v-model 雙向綁定 -->
+      <button v-on:click="addItem">新增</button>              <!-- 2. 新增資料 -->
+    </div>
+    <ul>
+      <li v-for="(item, index) in todoItem">                 <!-- 3. render 資料，顯示 todoItem 內的每個 item。 (item 內容, index 索引) -->
+        {{index+1}}:{{item}}
+        <button v-on:click="removeItem(index)">刪除</button>  <!-- 4. 執行刪除，用函式執行式，傳入 v-for 的 index 索引值 -->
+      </li>   
+    </ul>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        input: '',                                  // 1. 儲存輸入內容，v-model 雙向綁定
+        todoItem: [],                               // 2. 存放代辦資料 (data)
+      },
+      methods: { 
+        addItem(){                                  // 2. 儲存新增的資料 (指令)
+          this.todoItem.push(this.input);           
+          this.input = '';  // 清空輸入
+        },
+        removeItem(index){                           // 4. 刪除項目
+          this.todoItem.splice(index,1);             // splice(索引位置, 筆數)，從索引位置刪除1筆
+        }
+      }
+    })  
+  </script>
+</body>
+</html>
